@@ -1,14 +1,14 @@
 # Dockerfile
 FROM i386/php:5.6-apache
 
-# เปิด mod_rewrite
+# mod_rewrite
 RUN a2enmod rewrite
 
-# คัดลอก source code ไปที่ Apache root
+# copy source code into Apache root
 COPY ./app /var/www/html/
 
-# เปลี่ยนสิทธิ์เพื่อให้ Apache เขียนได้
+# Apache
 RUN chown -R www-data:www-data /var/www/html
 
-# ตั้งค่า working directory
+# setup working directory
 WORKDIR /var/www/html
